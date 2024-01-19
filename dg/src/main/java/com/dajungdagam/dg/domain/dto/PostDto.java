@@ -5,9 +5,11 @@ import com.dajungdagam.dg.domain.entity.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.models.auth.In;
 import lombok.*;
-
+import org.springframework.format.annotation.DateTimeFormat;
 import java.time.*;
+import java.time.LocalDate;
 import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Getter
 @Setter // Setter랑 ToString 없으면 DB 내에 저장이 안되더라.
@@ -34,7 +36,8 @@ public class PostDto {
     private Integer price;
     private Integer personCount;
     private Integer personCurrCount;
-    private Date deadline;
+    @JsonFormat(pattern = "yyyy-MM-dd") //데이터 포맷 변환
+    private LocalDate deadline;
 
 
     public Post toEntity() {
@@ -63,7 +66,7 @@ public class PostDto {
     public PostDto(Long id, User user, Area area, String title, int postType,
                    String content, LocalDateTime createdTime, LocalDateTime updateTime, int viewCount, Long wishlistCount,
                    String chatLink, TradeStatus tradeStatus, ItemCategory itemCategory,
-                   Integer price, Integer personCount, Integer personCurrCount, Date deadline)
+                   Integer price, Integer personCount, Integer personCurrCount, LocalDate deadline)
 
     {
         this.id = id;

@@ -4,8 +4,11 @@ import com.dajungdagam.dg.domain.entity.*;
 import com.dajungdagam.dg.repository.AreaJpaRepository;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter // Setter랑 ToString 없으면 DB 내에 저장이 안되더라.
@@ -14,6 +17,7 @@ import java.time.LocalDateTime;
 public class PostWriteDto {
 
     public Long id;
+
     public String guName;
     public String dongName;
     public String title;
@@ -22,11 +26,14 @@ public class PostWriteDto {
     public LocalDateTime createdTime;
     public LocalDateTime updatedTime;
     public int viewCount;
+    // price
     public Integer wishlistCount;
     public String chatLink;
-    public LocalDateTime deadline;
+   @JsonFormat(pattern = "yyyy-MM-dd") //데이터 포맷 변환
+    public LocalDate deadline;
     public String categoryName;
 
+    
     public Post toEntity(Area area, ItemCategory itemCategory) {
 
         return Post.builder()
@@ -35,9 +42,11 @@ public class PostWriteDto {
                 .title(title)
                 .postType(postType)
                 .content(content)
+                .deadline(deadline)
                 .createdTime(createdTime)
                 .updateTime(updatedTime)
                 .viewCount(viewCount)
+                .deadline(deadline)
 //                .wishlistCount(wishlistCount)
                 .chatLink(chatLink)
                 .build();
@@ -45,7 +54,7 @@ public class PostWriteDto {
 
 
     @Builder
-    public PostWriteDto(Long id, String guName, String dongName, String title, int postType, String content, LocalDateTime createdTime, LocalDateTime updatedTime, int viewCount, Integer wishlistCount, String chatLink, LocalDateTime deadline, String categoryName) {
+    public PostWriteDto(Long id, String guName, String dongName, String title, int postType, String content, LocalDateTime createdTime, LocalDateTime updatedTime, int viewCount, Integer wishlistCount, String chatLink, LocalDate deadline, String categoryName) {
         this.id = id;
         this.guName = guName;
         this.dongName = dongName;

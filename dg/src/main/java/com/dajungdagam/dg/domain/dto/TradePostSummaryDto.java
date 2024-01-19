@@ -22,7 +22,6 @@ public class TradePostSummaryDto {
     private TradeStatus tradeStatus;
     private int postType;
 
-
     @Builder
     public TradePostSummaryDto(Long id, User user, String title, String tradeArea,
                                String content, int viewCount, Long wishlistCount,

@@ -11,7 +11,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
@@ -29,7 +28,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query("update Post p set p.viewCount = p.viewCount + 1 where p.id = :id")
     int updateviewCount(Long id);
 
-    List<Post> findByItemCategoryAndPostType(ItemCategory itemCategory, int postType);
+     List<Post> findByItemCategoryAndPostType(ItemCategory itemCategory, int postType);
 
 
     List<Post> findByTradeStatusAndPostType(TradeStatus tradeStatus, int postType);
@@ -39,5 +38,9 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
 
     List<Post> findByPostType(int postType, Sort sort);
+
+
+//    // 특정 타입의 글 조회
+//    List<PostDto> findByType(int postType);
 
 }

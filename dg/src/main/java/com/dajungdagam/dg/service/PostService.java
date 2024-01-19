@@ -45,11 +45,12 @@ public class PostService {
     private static final int PAGE_POST_COUNT = 9; // 한 페이지에 존재하는 게시글 수
 
     @Autowired
-    public PostService(PostRepository postRepository, ImageRepository imageRepository, WishlistService wishlistService, WishListJpaRepository wishlistRepository, AreaJpaRepository areaJpaRepository) {
+    public PostService(ItemCategoryRepository itemCategoryRepository, PostRepository postRepository, ImageRepository imageRepository, WishlistService wishlistService, WishListJpaRepository wishlistRepository, AreaJpaRepository areaJpaRepository) {
         this.postRepository = postRepository;
         this.imageRepository = imageRepository;
         this.wishlistService = wishlistService;
         this.wishlistRepository = wishlistRepository;
+        this.itemCategoryRepository = itemCategoryRepository;
         this.areaJpaRepository = areaJpaRepository;
     }
 
@@ -396,4 +397,3 @@ public class PostService {
     }
 
 }
-
