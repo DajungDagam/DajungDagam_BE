@@ -21,6 +21,6 @@ public class WishlistTradePost {
 
     @ManyToOne
     @JoinColumn(name = "tradePost")
-    private TradePost tradePost;
+    private Post tradePost;
 
 }

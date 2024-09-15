@@ -9,12 +9,15 @@ import org.springframework.http.HttpStatus;
 @Getter
 @Setter
 public class UserMypageInfoResponseDto {
-    private User user;
+    private String nickName;
+    private String info;
+    private String guName;
+    private String dongName;
 
-    private HttpStatus httpStatus;
-
-    public UserMypageInfoResponseDto(User user, HttpStatus httpStatus) {
-        this.user = user;
-        this.httpStatus = httpStatus;
+    public UserMypageInfoResponseDto(String nickName, String info, String guName, String dongName) {
+        this.nickName = nickName;
+        this.info = info;
+        this.guName = guName;
+        this.dongName = dongName;
     }
 }

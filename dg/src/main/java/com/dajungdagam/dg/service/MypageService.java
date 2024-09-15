@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class MypageService {
 
     @Autowired
-    private TradePostService tradePostService;
+    private PostService postService;
 
     public void getUserWrittenPosts() {
 

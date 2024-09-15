@@ -32,25 +32,24 @@ public class Wishlist {
     @OneToMany(fetch = FetchType.LAZY)
     @Setter
     @Getter
-    @JsonManagedReference
+    //@JsonManagedReference
     @JsonIgnore
-    private List<TradePost> tradePosts;
+    private List<Post> tradePosts;
 
-    @Column
+    @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime createdTime;
 
     @OneToOne(fetch =  FetchType.LAZY)
     @JoinColumn(name="user_id")
-
     private User user;
 
 
-    public void addTradePost(TradePost tradePost){
+    public void addTradePost(Post tradePost){
         tradePosts.add(tradePost);
     }
 
     @Builder
-    public Wishlist(Long id, List<TradePost> tradePosts, LocalDateTime createdTime, User user) {
+    public Wishlist(Long id, List<Post> tradePosts, LocalDateTime createdTime, User user) {
         this.id = id;
         this.tradePosts = tradePosts;
         this.createdTime = createdTime;

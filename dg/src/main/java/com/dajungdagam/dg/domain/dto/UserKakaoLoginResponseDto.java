@@ -14,10 +14,12 @@ public class UserKakaoLoginResponseDto {
     private HttpStatus httpStatus;
     private String jwtToken;
     private User user;
+    private boolean newUser;
 
-    public UserKakaoLoginResponseDto(HttpStatus httpStatus, String accessToken, User user) {
+    public UserKakaoLoginResponseDto(HttpStatus httpStatus, String jwtToken, User user, boolean newUser) {
         this.httpStatus = httpStatus;
-        this.jwtToken = accessToken;
+        this.jwtToken = jwtToken;
         this.user = user;
+        this.newUser = newUser;
     }
 }

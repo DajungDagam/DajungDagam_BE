@@ -1,6 +1,6 @@
 package com.dajungdagam.dg.domain.dto;
 
-import com.dajungdagam.dg.domain.entity.TradePost;
+import com.dajungdagam.dg.domain.entity.Post;
 import com.dajungdagam.dg.domain.entity.User;
 import com.dajungdagam.dg.domain.entity.Wishlist;
 import lombok.*;
@@ -13,15 +13,15 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class WishlistDto {
     private Long id;
-    private String kakaoName;
+    private int userId;
     private int postCategory;
     private Long postId;
     private LocalDateTime createdTime;
 
     @Builder
-    public WishlistDto(Long id, String kakaoName, int postCategory, Long postId, LocalDateTime createdTime) {
+    public WishlistDto(Long id, int userId, int postCategory, Long postId, LocalDateTime createdTime) {
         this.id = id;
-        this.kakaoName = kakaoName;
+        this.userId = userId;
         this.postCategory = postCategory;
         this.postId = postId;
         this.createdTime = createdTime;

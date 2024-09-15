@@ -1,6 +1,6 @@
 package com.dajungdagam.dg.domain.dto;
 
-import com.dajungdagam.dg.domain.entity.TradePost;
+import com.dajungdagam.dg.domain.entity.Post;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
@@ -16,9 +16,9 @@ import java.util.List;
 @Setter
 public class WishlistResponseDto {
     private Long wishlist_id;
-    private List<TradePost> tradePosts;
+    private List<Post> tradePosts;
 
-    public WishlistResponseDto(Long wishlist_id, List<TradePost> tradePosts) {
+    public WishlistResponseDto(Long wishlist_id, List<Post> tradePosts) {
         this.wishlist_id = wishlist_id;
         this.tradePosts = tradePosts;
     }

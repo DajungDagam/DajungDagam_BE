@@ -5,16 +5,18 @@
     <title>home</title>
 </head>
 <body>
-    <button onclick="saveReq()">글작성</button>
-    <a href="/trade/posts">글작성(링크)</a>
-    <button onclick="listReq()">글목록</button>
+    <button onclick="listReqGroupBuying()">공동구매 글목록</button>
+    <button onclick="listReqTradePost()">물물교환 글목록</button>
 </body>
 <script>
-    const saveReq = () => {
-        location.href = "/trade/posts";
+    const listReqGroupBuying = () => {
+        location.href = "/group-buying/";
     }
-    const listReq = () => {
+
+    const listReqTradePost = () => {
         location.href = "/trade/";
     }
+
+
 </script>
 </html>

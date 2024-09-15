@@ -12,6 +12,12 @@ import org.springframework.security.config.annotation.web.configurers.HeadersCon
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -74,4 +80,31 @@ public class SecurityConfiguration {
                 .addFilterBefore(new JwtFilter(userService, secretKey), UsernamePasswordAuthenticationFilter.class) // jwtfiler에서 처리하도록
                 .build();
     }
+    
+    // // login ignoring
+    // @Bean
+    // public WebSecurityCustomizer webSecurityCustomizer() {
+    //     return web -> {
+    //         web.ignoring()
+    //                 .requestMatchers(
+    //                         "/login/**"
+    //                 );
+    //     };
+    // }
+    
+    // @Bean
+    // public CorsConfigurationSource corsConfigurationSource() {
+    //     CorsConfiguration config = new CorsConfiguration();
+
+    //     config.setAllowCredentials(true);
+    //     config.setAllowedOrigins(List.of("https://localhost:3000"));
+    //     config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
+    //     config.setAllowedHeaders(List.of("*"));
+    //     config.setExposedHeaders(List.of("*"));
+
+    //     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    //     source.registerCorsConfiguration("/**", config);
+    //     return source;
+    // }
+    
 }

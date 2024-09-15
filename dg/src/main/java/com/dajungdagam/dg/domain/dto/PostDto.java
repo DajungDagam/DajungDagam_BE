@@ -2,38 +2,51 @@ package com.dajungdagam.dg.domain.dto;
 
 
 import com.dajungdagam.dg.domain.entity.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.models.auth.In;
 import lombok.*;
-
+import org.springframework.format.annotation.DateTimeFormat;
 import java.time.*;
+import java.time.LocalDate;
+import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Getter
 @Setter // Setter랑 ToString 없으면 DB 내에 저장이 안되더라.
 @ToString
 @NoArgsConstructor
-public class TradePostDto {
+public class PostDto {
 
     private Long id;
+
+    @JsonIgnore
     private User user;
     private Area area;
     private String title;
-    private PostType postType;
-    private String tradeArea;
+    private int postType;
     private String content;
     private LocalDateTime createdTime;
     private LocalDateTime updateTime;
-    private Long viewCount;
+    private int viewCount;
     private Long wishlistCount;
     private String chatLink;
     private TradeStatus tradeStatus;
     private Wishlist wishlist;
+    private ItemCategory itemCategory;
+    private Integer price;
+    private Integer personCount;
+    private Integer personCurrCount;
+    @JsonFormat(pattern = "yyyy-MM-dd") //데이터 포맷 변환
+    private LocalDate deadline;
 
-    public TradePost toEntity() {
-        return TradePost.builder()
+
+    public Post toEntity() {
+        return Post.builder()
                 .id(id)
                 .user(user)
                 .area(area)
                 .title(title)
                 .postType(postType)
-                .tradeArea(tradeArea)
                 .content(content)
                 .createdTime(createdTime)
                 .updateTime(updateTime)
@@ -41,21 +54,26 @@ public class TradePostDto {
                 .wishlistCount(wishlistCount)
                 .chatLink(chatLink)
                 .tradeStatus(tradeStatus)
+                .itemCategory(itemCategory)
+                .price(price)
+                .personCount(personCount)
+                .personCurrCount(personCurrCount)
+                .deadline(deadline)
                 .build();
     }
 
     @Builder
-    public TradePostDto(Long id, User user, Area area, String title, PostType postType,
-                        String tradeArea, String content, LocalDateTime createdTime,
-                        LocalDateTime updateTime, Long viewCount, Long wishlistCount,
-                        String chatLink, TradeStatus tradeStatus, Wishlist wishlist)
+    public PostDto(Long id, User user, Area area, String title, int postType,
+                   String content, LocalDateTime createdTime, LocalDateTime updateTime, int viewCount, Long wishlistCount,
+                   String chatLink, TradeStatus tradeStatus, ItemCategory itemCategory,
+                   Integer price, Integer personCount, Integer personCurrCount, LocalDate deadline)
+
     {
         this.id = id;
         this.user = user;
         this.area = area;
         this.title = title;
         this.postType = postType;
-        this.tradeArea = tradeArea;
         this.content = content;
         this.createdTime = createdTime;
         this.updateTime = updateTime;
@@ -63,7 +81,11 @@ public class TradePostDto {
         this.wishlistCount = wishlistCount;
         this.chatLink = chatLink;
         this.tradeStatus = tradeStatus;
-        this.wishlist = wishlist;
+        this.itemCategory = itemCategory;
+        this.price = price;
+        this.personCount = personCount;
+        this.personCurrCount = personCurrCount;
+        this.deadline = deadline;
     }
 
 }
